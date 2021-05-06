@@ -1,12 +1,11 @@
 def solution(n, times):
     answer = 0
     
-    leng = len(times) # 심사관 자리 갯수
     left = 1
-    right = (leng+1) * max(times) # 최대 범위
+    right = max(times) * n # 최대 범위(모든 인원이 최대시간이 걸리는 심사에 몰빵되는 경우)
     
     while left <= right :
-        mid = (left + right) // 2
+        mid = (left + right) // 2 
         
         cnt = 0
         for time in times :
