@@ -8,16 +8,16 @@ def solution(stones, k):
         blank = 0 # 연속으로 공백이 발생되는 횟수
         flag = False # 공백 발생여부가 k개인지 확인하기 위한 플래그
         for stone in stones :
-            if stone < mid : # 만약 해당 돌의 높이가 mid보다도 작다면 공백으로 카운트
+            if stone < mid : # 만약 해당 돌의 높이가 mid보다도 작다면 blank 카운트를 실시
                 blank += 1
-            else : # 그렇지 않으면 연속된 공백횟수가 다시 0개로 초기화
+            else : # 그렇지 않으면 연속된 공백횟수(blank)가 다시 0개로 초기화
                 blank = 0
             
             if blank == k : # 연속된 공백 갯수가 0이라면 탐색 종료
                 flag = True
                 break
         
-        if flag : # 연속된 공백갯수가 k개라면 right의 최고높이를 mid높이-1 로 지정
+        if flag : # 연속된 공백갯수가 k개라면 right의 최고높이를 mid-1 로 지정
             right = mid-1
         else : # 그렇지 않다면, 건널수 있는 현재 최대 인원수와 mid높이를 비교해서 큰값을 최대 인원수로 설정한다
             answer = max(answer, mid)
