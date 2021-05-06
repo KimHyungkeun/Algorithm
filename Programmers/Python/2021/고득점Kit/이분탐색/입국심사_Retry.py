@@ -25,3 +25,7 @@ def solution(n, times):
             left = mid + 1
             
     return answer
+
+n = 6
+times = [7,10]
+solution(n ,times)
