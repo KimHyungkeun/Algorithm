@@ -10,7 +10,7 @@ def solution(board) :
     queue.append((0,0,-1,0)) # x좌표, y좌표, 방향, 비용
     visit = {(0,0,0):0, (0,0,1):0, (0,0,2):0, (0,0,3):0} # 0 : 상, 1 : 좌, 2 : 하, 3 : 우
     while queue :
-        print(queue)
+        # print(queue)
         x, y, dir1, cost = queue.popleft()
         for d in range(4) :
             nx = x + dx[d]
