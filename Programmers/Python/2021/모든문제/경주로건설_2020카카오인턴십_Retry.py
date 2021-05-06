@@ -33,7 +33,7 @@ def solution(board) :
                     visit[(nx,ny,d)] = newcost
                     queue.append((nx, ny, d, newcost))
         
-        print(visit)
+        # print(visit)
     
     return answer
 
