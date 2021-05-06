@@ -1,7 +1,7 @@
 def solution(n, times):
     answer = 0
     
-    leng = len(times)
+    leng = len(times) # 심사관 자리 갯수
     left = 1
     right = (leng+1) * max(times) # 최대 범위
     
