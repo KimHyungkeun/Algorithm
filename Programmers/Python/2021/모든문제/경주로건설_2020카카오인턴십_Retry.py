@@ -3,13 +3,14 @@ def solution(board) :
     n = len(board)
     dx = [-1,0,1,0]
     dy = [0,-1,0,1]
-    answer = float('inf')
+    answer = 99999999
     queue = deque()
 
     # x좌표, y좌표 방향 비용 순서로 큐에 넣음(방향은 맨 처음 시작할 때 -1로 설정)
     queue.append((0,0,-1,0)) # x좌표, y좌표, 방향, 비용
     visit = {(0,0,0):0, (0,0,1):0, (0,0,2):0, (0,0,3):0} # 0 : 상, 1 : 좌, 2 : 하, 3 : 우
     while queue :
+        print(queue)
         x, y, dir1, cost = queue.popleft()
         for d in range(4) :
             nx = x + dx[d]
@@ -33,6 +34,10 @@ def solution(board) :
                     visit[(nx,ny,d)] = newcost
                     queue.append((nx, ny, d, newcost))
         
+                # print(nx, ny)
+                # for b in board :
+                #     print(b)
+                # print("---------")
         # print(visit)
     
     return answer
