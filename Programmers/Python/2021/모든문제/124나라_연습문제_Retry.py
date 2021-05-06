@@ -23,4 +23,4 @@ def solution(n):
 n = 26
 solution(n)
 
-# https://itholic.github.io/kata-124-world/
+## https://itholic.github.io/kata-124-world/
