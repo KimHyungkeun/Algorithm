@@ -26,6 +26,8 @@ def solution(n, times):
             
     return answer
 
+# https://wwlee94.github.io/category/algorithm/binary-search/immigration/
+
 n = 6
 times = [7,10]
 solution(n ,times)
