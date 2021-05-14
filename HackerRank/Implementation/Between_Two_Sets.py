@@ -1,6 +1,7 @@
 # 의도 : a 배열에 대한 최소공배수의 배수 리스트와, b 배열의 최대공약수의 약수 리스트를 구해서 두 리스트의 공통요소를 발견   
 
 # 210514 풀이
+from collections import deque
 def gcd(a, b) :
     while b != 0 :
         r = a % b
