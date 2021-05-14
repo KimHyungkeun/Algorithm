@@ -60,5 +60,5 @@ else :
 
 
 
-
+# https://www.acmicpc.net/board/view/22085 : 문제 조건 재확인
 # https://velog.io/@koyo/python-is-prime-number : 에라토스테네스의 체 더육 빠른 효율로
