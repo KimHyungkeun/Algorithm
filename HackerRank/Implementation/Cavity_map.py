@@ -1,40 +1,77 @@
 # Complete the cavityMap function below.
 
-# 210512 힌트 보고 풀어서 이해한게 아님
+# 210514 풀이
 def cavityMap(grid):
     # Write your code here
-    dx = [-1,0,1,0]
-    dy = [0,-1,0,1]
     n = len(grid)
-    
     check = []
-    for i in range(1,n-1) :
-        for j in range(1, n-1) :            
+    
+    dx = [1,0,-1,0]
+    dy = [0,1,0,-1]
+    
+    for i in range(1, n-1) :
+        for j in range(1, n-1) :
             flag = True
             for d in range(4) :
-                p_i = i + dx[d]
-                p_j = j + dy[d]
+                px = i + dx[d]
+                py = j + dy[d]
                 
-                if 0 <= p_i < n and 0 <= p_j < n :
-                    if grid[i][j] > grid[p_i][p_j] :
-                        continue
-                    else :
+                if 0 <= px < n and 0 <= py < n :
+                    if grid[i][j] <= grid[px][py] :
                         flag = False
                         break
+                 
+                        
             if flag :
                 check.append((i,j))
     
-    new_grid = []
+    result = []
     for i in range(n) :
         tmp = ""
         for j in range(n) :
             if (i,j) in check :
-                tmp += 'X'
+                tmp += "X"
             else :
                 tmp += str(grid[i][j])
-        new_grid.append(tmp)
+        result.append(tmp)
+    
+    return result
+
+# 210512 힌트 보고 풀어서 이해한게 아님
+# def cavityMap(grid):
+#     # Write your code here
+#     dx = [-1,0,1,0]
+#     dy = [0,-1,0,1]
+#     n = len(grid)
+    
+#     check = []
+#     for i in range(1,n-1) :
+#         for j in range(1, n-1) :            
+#             flag = True
+#             for d in range(4) :
+#                 p_i = i + dx[d]
+#                 p_j = j + dy[d]
+                
+#                 if 0 <= p_i < n and 0 <= p_j < n :
+#                     if grid[i][j] > grid[p_i][p_j] :
+#                         continue
+#                     else :
+#                         flag = False
+#                         break
+#             if flag :
+#                 check.append((i,j))
+    
+#     new_grid = []
+#     for i in range(n) :
+#         tmp = ""
+#         for j in range(n) :
+#             if (i,j) in check :
+#                 tmp += 'X'
+#             else :
+#                 tmp += str(grid[i][j])
+#         new_grid.append(tmp)
             
-    return new_grid
+#     return new_grid
 
 # def cavityMap(grid):
 #     new_grid = []
