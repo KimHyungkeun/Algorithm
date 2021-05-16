@@ -1,30 +1,56 @@
-# 210512 재도전 했는데 2시간 이상 걸려서 풀고 + 다른 반례나 답도 본 관계로 이해 못한걸로 판정
+# 210516 재도전
 
 import sys
 
 n, m = map(int, sys.stdin.readline().split())
 
-graph = []
-for i in range(n) :
+square = []
+for _ in range(n) :
     tmp = sys.stdin.readline().rstrip()
-    graph.append(tmp)
+    square.append(tmp)
 
-if n < m :
-    stand = n
+# print(square)
+limit = min(n,m)
 
-else :
-    stand = m
+minimum = 1
+for l in range(1, limit+1) :
+    # print(l)
+    for i in range(n-l) :
+        for j in range(m-l) :
+            # print((i,j), (i,j+l), (i+l,j), (i+l, j+l))
+            if square[i][j] == square[i][j+l] == square[i+l][j] == square[i+l][j+l] :
+                # print((i,j), (i,j+l), (i+l,j), (i+l, j+l))
+                minimum = l+1
+                break
 
-maximum = 1
+print(minimum**2)
 
-for k in range(stand) :
-    for i in range(n) :
-        for j in range(m) :        
-            if i+k < n and j+k < m :
-                if graph[i][j] == graph[i+k][j] == graph[i][j+k] == graph[i+k][j+k] :
-                    maximum = k+1
+# 210512 재도전 했는데 2시간 이상 걸려서 풀고 + 다른 반례나 답도 본 관계로 이해 못한걸로 판정
+# import sys
 
-print(maximum**2)
+# n, m = map(int, sys.stdin.readline().split())
+
+# graph = []
+# for i in range(n) :
+#     tmp = sys.stdin.readline().rstrip()
+#     graph.append(tmp)
+
+# if n < m :
+#     stand = n
+
+# else :
+#     stand = m
+
+# maximum = 1
+
+# for k in range(stand) :
+#     for i in range(n) :
+#         for j in range(m) :        
+#             if i+k < n and j+k < m :
+#                 if graph[i][j] == graph[i+k][j] == graph[i][j+k] == graph[i+k][j+k] :
+#                     maximum = k+1
+
+# print(maximum**2)
 
 
 # n, m = map(int, sys.stdin.readline().split())
