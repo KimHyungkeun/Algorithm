@@ -1,32 +1,23 @@
+# 210516 재도전, 아직도 제대로 이해하지 못함
+import sys
 
+n = int(sys.stdin.readline())
+arr = list(map(int, sys.stdin.readline().split()))
 
+seat = [0] * n
+for i in range(1, n+1) :
+    idx = arr[i-1]
+    cnt = 0
 
+    for j in range(n) :
+        if cnt == idx and seat[j] == 0 :
+            seat[j] = i
+            break
+        elif seat[j] == 0 :
+            cnt += 1 
+    # print(seat)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(*seat)
 
 
 
