@@ -40,34 +40,6 @@ while queue :
 
 print(maze[n-1][m-1])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # def bfs(x, y) :
 #     global cnt
 #     queue = deque()

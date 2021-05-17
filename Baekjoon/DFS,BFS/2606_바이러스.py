@@ -27,35 +27,6 @@ else :
     result = visited[1:].count(True) - 1
     print(result)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # n = int(sys.stdin.readline())
 # m = int(sys.stdin.readline())
 
