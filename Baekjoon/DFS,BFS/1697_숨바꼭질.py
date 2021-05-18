@@ -1,55 +1,97 @@
+# 210518 재도전
 import sys
 from collections import deque
 
-# 수빈이 n, 동생 k
 n, k = map(int, sys.stdin.readline().split())
-pos = [0]*100001 # 갈 수 있는 모든 포지션에 대한 위치
 
-queue = deque() # 현재 초에서 비교가능한 모든 좌표의 수
-queue.append(n) # 첫번째는 본인 자신
-tmp_queue = deque() # 다음 비교할 좌표들을 저장하기위한 임시 덱
-sec = 0
-
-# 본인과 같은 위치에 있으면 0초걸림
 if n == k :
-    print(sec)
+    print(0)
 
 else :
+    q = deque()
+    q.append(n)
+    length = len(q)
+    sec = 0
+    visited = [0] * 100001
+    while q :
+        x = q.popleft()
+        length -= 1
 
-    while True :
-        # 모두 비교했다면, 다음 초가 지났을때의 가능한 모든 경우의 수 비교
-        if not queue :
-            queue = tmp_queue
-            tmp_queue = deque()
+        if 0 <= x-1 <= 100000 and visited[x-1] == 0:
+            if x-1 == k :
+                sec += 1
+                break
+            q.append(x-1)
+            visited[x-1] = 1
+        if 0 <= x+1 <= 100000 and visited[x+1] == 0:
+            if x+1 == k :
+                sec += 1
+                break
+            q.append(x+1)
+            visited[x+1] = 1
+        if 0 <= 2*x <= 100000 and visited[2*x] == 0:
+            if 2*x == k :
+                sec += 1
+                break
+            q.append(2*x)
+            visited[2*x] = 1
+         
+        if length == 0 :
             sec += 1
-        
-        # 해당 좌표에서 다음 초때 이동 가능한 모든 경우의 수 비교
-        search = queue.popleft()
+            length = len(q)
+    
+    print(sec)
 
-        if 0 <= search <= 100000 and pos[search] == 0:
-            pos[search] = 1
 
-        # 1. n-1로 이동            
-        if 0 <= search-1 <= 100000 and pos[search-1] == 0:
-            tmp_queue.append(search-1)
-            pos[search-1] = 1
+# # 수빈이 n, 동생 k
+# n, k = map(int, sys.stdin.readline().split())
+# pos = [0]*100001 # 갈 수 있는 모든 포지션에 대한 위치
+
+# queue = deque() # 현재 초에서 비교가능한 모든 좌표의 수
+# queue.append(n) # 첫번째는 본인 자신
+# tmp_queue = deque() # 다음 비교할 좌표들을 저장하기위한 임시 덱
+# sec = 0
+
+# # 본인과 같은 위치에 있으면 0초걸림
+# if n == k :
+#     print(sec)
+
+# else :
+
+#     while True :
+#         # 모두 비교했다면, 다음 초가 지났을때의 가능한 모든 경우의 수 비교
+#         if not queue :
+#             queue = tmp_queue
+#             tmp_queue = deque()
+#             sec += 1
         
-        # 2. n+1로 이동
-        if 0 <= search+1 <= 100000 and pos[search+1] == 0:
-            tmp_queue.append(search+1)
-            pos[search+1] = 1
+#         # 해당 좌표에서 다음 초때 이동 가능한 모든 경우의 수 비교
+#         search = queue.popleft()
+
+#         if 0 <= search <= 100000 and pos[search] == 0:
+#             pos[search] = 1
+
+#         # 1. n-1로 이동            
+#         if 0 <= search-1 <= 100000 and pos[search-1] == 0:
+#             tmp_queue.append(search-1)
+#             pos[search-1] = 1
         
-        # 3. n*2 로 이동
-        if 0 <= search*2 <= 100000 and pos[search*2] == 0:
-            tmp_queue.append(search*2)
-            pos[search*2] = 1
+#         # 2. n+1로 이동
+#         if 0 <= search+1 <= 100000 and pos[search+1] == 0:
+#             tmp_queue.append(search+1)
+#             pos[search+1] = 1
         
-        # 만약 해당초에 있다면 출력한다
-        if k in tmp_queue :
-            sec += 1
-            break
+#         # 3. n*2 로 이동
+#         if 0 <= search*2 <= 100000 and pos[search*2] == 0:
+#             tmp_queue.append(search*2)
+#             pos[search*2] = 1
         
-    print(sec)        
+#         # 만약 해당초에 있다면 출력한다
+#         if k in tmp_queue :
+#             sec += 1
+#             break
+        
+#     print(sec)        
 
 
 
