@@ -1,38 +1,50 @@
-
+import sys
+from collections import deque
 # 210518 재풀이
 
+f, s, g, u, d = map(int, sys.stdin.readline().split())
 
+if s == g :
+    print(0)
 
+else :
+    visited = [0] * (f+1)
+    visited[s] = 1
+    queue = deque()
+    queue.append(s)
+    length = len(queue)
 
+    cnt = 0
+    while queue :
+        floor = queue.popleft()
+        length -= 1
 
+        if 1 <= floor+u <= f and visited[floor+u] == 0 :
+            if floor+u == g :
+                visited[floor+u] = 1
+                cnt += 1
+                break
+            queue.append(floor+u)
+            visited[floor+u] = 1
+        
+        if 1 <= floor-d <= f and visited[floor-d] == 0 :
+            if floor-d == g :
+                visited[floor-d] = 1
+                cnt += 1
+                break
+            queue.append(floor-d)
+            visited[floor-d] = 1
 
+        if length == 0 :
+            cnt += 1
+            length = len(queue)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # print(visited[g])
+    # print(sum(visited[1:f]))
+    if visited[g] == 0 :
+        print("use the stairs")
+    else :
+        print(cnt) 
 
 # # 210403
 # import sys
