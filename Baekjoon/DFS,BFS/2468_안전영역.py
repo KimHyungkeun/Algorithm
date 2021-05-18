@@ -70,36 +70,6 @@ for h in range(max_high+1) :
 print(answer)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # import sys
 # sys.setrecursionlimit(100000)
 
