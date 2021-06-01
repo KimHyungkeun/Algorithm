@@ -12,6 +12,8 @@ def findMergeNode(head1, head2):
         if p2 is None : # 리스트2가 모두 검색을 다하면 리스트1의 처음 지점으로 위치 선정
             p2 = head1
     return p1.data
+
+    # 참고 : https://www.youtube.com/watch?v=WcOdcUHOA1M&ab_channel=CodingCart
     
     # node1 = head1
     # node2 = head2
