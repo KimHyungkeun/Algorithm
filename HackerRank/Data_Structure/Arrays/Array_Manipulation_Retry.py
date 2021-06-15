@@ -37,7 +37,38 @@ def arrayManipulation(n, queries):
 # https://sites.northwestern.edu/acids/2018/11/12/solution-hackerrank-array-manipulation/
 
 n = 86400
-queries = [[1,5,3],[4,8,7],[6,9,1]]
-# queries = [[1,86400,1]] * 86400
+# queries = [[1,5,3],[4,8,7],[6,9,1]]
+queries = [[1,86400,1]] * 86400
+# queries = [[1,10,1]] * 10
 result = arrayManipulation(n, queries)
 print(result)
+
+
+# 정답 참고할만한 예제
+# def arrayManipulation(n, queries):
+#     # Write your code here
+    
+#     arr = [0]*n
+#     for q in queries:
+#         arr[q[0] - 1] += q[2]
+#         if q[1] != len(arr):
+#             arr[q[1]] -= q[2]
+        
+#     # print(arr)
+#     maxval = 0
+#     itt = 0
+    
+#     for q in arr:
+#         itt += q
+#         if itt > maxval:
+#             maxval = itt
+
+#     print(arr[:10])
+#     idx = arr.index(maxval)
+    
+#     idx += 1
+#     cnt = 1
+#     while idx < len(arr) and arr[idx] == 0 :
+#         cnt += 1
+#         idx += 1
+#     return cnt
