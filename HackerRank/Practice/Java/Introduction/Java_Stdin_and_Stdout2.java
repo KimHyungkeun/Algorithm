@@ -9,7 +9,7 @@ public class Solution {
         
         int integer = sc.nextInt(); 
         double doubles = sc.nextDouble();
-        sc.nextLine();
+        sc.nextLine(); // 쓸데 없는 개행문자 제거
         String str = sc.nextLine();       
         
        
