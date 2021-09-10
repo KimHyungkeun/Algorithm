@@ -56,15 +56,6 @@ for h in range(max_high+1) :
             if dfs(x,y) :      
                 cnt += 1
 
-    # print(cnt)
-
-    # for b in test_board :
-    #     print(b)
-    # print("---------------")
-    # for b in visited :
-    #     print(b)
-    # print("---------------")
-
     answer = max(answer, cnt)
 
 print(answer)
