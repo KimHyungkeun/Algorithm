@@ -54,6 +54,7 @@ while True :
     cnt += 1
     n = int(str(num2) + str(total)[-1])
 
+    print(n)
     if n == start :
         print(cnt)
         break
