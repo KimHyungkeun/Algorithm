@@ -1,3 +1,4 @@
+# 저점과 현재값과의 차이 계산
 import sys
 
 class Solution:
