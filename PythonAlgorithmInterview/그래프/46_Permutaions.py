@@ -37,3 +37,26 @@ class Solution:
         
         dfs(nums)
         return results
+
+# 211217
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        result = []
+        prev_list = []
+        
+        def dfs(elements) :
+            if len(elements) == 0 :
+                result.append(prev_list[:])
+                return
+                
+            
+            for e in elements :
+                next_list = elements[:]
+                next_list.remove(e)
+                
+                prev_list.append(e)
+                dfs(next_list)
+                prev_list.pop()
+                  
+        dfs(nums)
+        return result
