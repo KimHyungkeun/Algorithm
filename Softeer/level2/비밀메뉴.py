@@ -35,3 +35,21 @@ if flag :
 
 else :
     print("normal")
+
+# 220102 풀이
+import sys
+m,n,k = map(int, sys.stdin.readline().split())
+
+sec_num = list(map(int, sys.stdin.readline().split()))
+total_num = list(map(int, sys.stdin.readline().split()))
+
+flag = False
+for i in range(n) :
+    if total_num[i:i+m] == sec_num :
+        flag = True
+        break
+
+if flag :
+    print("secret")
+else :
+    print("normal")
