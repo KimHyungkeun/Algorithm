@@ -20,3 +20,21 @@ def solution(word):
     return answer
 
 # 참고 : https://velog.io/@guswl8280/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AA%A8%EC%9D%8C-%EC%82%AC%EC%A0%84-Python
+
+# 하단 코드도 가능
+from itertools import product
+
+def solution(word):
+    answer = 0
+    list1 = ['A','E','I','O','U']
+    list2 = list(product(list1, repeat=2))
+    list3 = list(product(list1, repeat=3))
+    list4 = list(product(list1, repeat=4))
+    list5 = list(product(list1, repeat=5))
+    total_list = list1 + list2 + list3 + list4 + list5
+    for i in range(len(total_list)) :
+        total_list[i] = ''.join(total_list[i])
+    
+    total_list.sort()
+    answer = total_list.index(word) + 1
+    return answer
