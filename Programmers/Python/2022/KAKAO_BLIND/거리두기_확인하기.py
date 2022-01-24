@@ -1,4 +1,3 @@
-# 82.8(부분점수만 맞음)
 def bfs(x, y, places) :
     dx = [0,0,1,-1,1,1,-1,-1]
     dy = [1,-1,0,0,1,-1,1,-1]
@@ -17,34 +16,31 @@ def bfs(x, y, places) :
             if dx[i] == 1 and dy[i] == 0 and nx + 1 < 5 :
                 if places[nx+1][ny] == 'P' :
                     return False
-            elif dx[i] == -1 and dy[i] == 0 and nx - 1 >= 0 : 
+            if dx[i] == -1 and dy[i] == 0 and nx - 1 >= 0 : 
                 if places[nx-1][ny] == 'P' :
                     return False
-            elif dx[i] == 0 and dy[i] == 1 and ny + 1 < 5 : 
+            if dx[i] == 0 and dy[i] == 1 and ny + 1 < 5 : 
                 if places[nx][ny+1] == 'P' :
                     return False
-            elif dx[i] == 0 and dy[i] == -1 and ny - 1 >= 0 : 
+            if dx[i] == 0 and dy[i] == -1 and ny - 1 >= 0 : 
                 if places[nx][ny-1] == 'P' :
                     return False
-            else :
-                None
+
         
         if i >= 4 and places[nx][ny] == 'P':
-            if dx[i] == 1 and dy[i] == 1 and nx + 1 < 5 and ny + 1 < 5 :
-                if places[nx+1][ny] == 'O' or places[nx][ny+1] == 'O' :
+            if dx[i] == 1 and dy[i] == 1 and x + 1 < 5 and y + 1 < 5 :
+                if places[x+1][y] == 'O' or places[x][y+1] == 'O' :
                     return False
-            elif dx[i] == 1 and dy[i] == -1 and nx + 1 < 5 and ny - 1 >= 0 :
-                if places[nx+1][ny] == 'O' or places[nx][ny-1] == 'O' :
+            if dx[i] == 1 and dy[i] == -1 and x + 1 < 5 and y - 1 >= 0 :
+                if places[x+1][y] == 'O' or places[x][y-1] == 'O' :
                     return False
-            elif dx[i] == -1 and dy[i] == 1 and nx - 1 >= 0 and ny + 1 < 5 :
-                if places[nx-1][ny] == 'O' or places[nx][ny+1] == 'O' :
+            if dx[i] == -1 and dy[i] == 1 and x - 1 >= 0 and y + 1 < 5 :
+                if places[x-1][y] == 'O' or places[x][y+1] == 'O' :
                     return False
-            elif dx[i] == -1 and dy[i] == -1 and nx - 1 >= 0 and ny - 1 >= 0 :
-                if places[nx-1][ny] == 'O' or places[nx][ny-1] == 'O' :
+            if dx[i] == -1 and dy[i] == -1 and x - 1 >= 0 and y - 1 >= 0 :
+                if places[x-1][y] == 'O' or places[x][y-1] == 'O' :
                     return False
-            else :
-                None
-            
+     
     return True
             
 def search(places) :
