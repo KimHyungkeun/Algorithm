@@ -2,10 +2,12 @@ def solution(numbers):
     answer = []
     
     for num in numbers :
+        # 해당 숫자를 2진수로 바꾸고, 맨 끝에서부터 0이있는곳의 위치를 확인한다. 그리고 해당 자리를 1로 바꾼다
         bin_num = list('0' + bin(num)[2:])
         idx = ''.join(bin_num).rfind('0')
         bin_num[idx] = '1'
         
+        # num이 홀수라면 idx 다음자리를 0으로 바꾼다
         if num % 2 == 1 :
             bin_num[idx+1] = '0'
         
