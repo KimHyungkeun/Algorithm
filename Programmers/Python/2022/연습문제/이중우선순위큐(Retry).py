@@ -12,7 +12,7 @@ def solution(operations):
             heapq.heappush(max_heap, (-num, num))
         
         else :
-            if not min_heap :
+            if not min_heap or not max_heap:
                 continue
             
             if cmd[1] == "1" :
@@ -23,7 +23,7 @@ def solution(operations):
                 min_val = heapq.heappop(min_heap)
                 max_heap.remove((-min_val, min_val))
         
-    if min_heap :
+    if min_heap or max_heap:
         answer = [heapq.heappop(max_heap)[1], heapq.heappop(min_heap)]
     else :
         answer = [0,0]
