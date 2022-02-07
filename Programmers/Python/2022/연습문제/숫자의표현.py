@@ -35,6 +35,25 @@ def solution(n):
     
     return cnt
 
+
+# 220207 풀이
+def solution(n):
+    cnt = 0
+    nums = [i for i in range(1,n)]
+    
+    for i in range(1, n+1) :
+        total = 0
+        for j in range(i, n+1) :
+            total += j
+            
+            if total == n :
+                cnt += 1
+                break
+            
+            elif total > n :
+                break
+    
+    return cnt
 n = 15
 result = solution(n)
 print(result)

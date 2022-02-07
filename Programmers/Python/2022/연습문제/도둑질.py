@@ -24,3 +24,26 @@ def solution(money):
     return max(dp1.popitem()[1], dp2.popitem()[1])
 
 # 참고 : https://velog.io/@imacoolgirlyo/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%8F%84%EB%91%91%EC%A7%88-%ED%8C%8C%EC%9D%B4%EC%8D%AC
+
+# 220207 풀이
+from collections import OrderedDict
+def solution(money):
+    
+    if not money :
+        return 0
+    if len(money) <= 2 :
+        return max(money)
+    
+    dp = OrderedDict()
+    dp[0], dp[1] = money[0], max(money[0], money[1])
+    for i in range(2, len(money)-1) :
+        dp[i] = max(dp[i-1], dp[i-2] + money[i])
+    
+    dp2 = OrderedDict()
+    dp2[0], dp2[1] = 0, money[1]
+    for i in range(2, len(money)) :
+        dp2[i] = max(dp2[i-1], dp2[i-2] + money[i])
+    
+    ans = max(dp.popitem()[1], dp2.popitem()[1])
+
+    return ans
