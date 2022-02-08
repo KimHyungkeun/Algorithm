@@ -23,3 +23,5 @@ def solution(n, works):
     for h in heap :
         ans += h[1]**2
     return ans
+
+# https://velog.io/@daon9apples/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-Level3-%EC%95%BC%EA%B7%BC-%EC%A7%80%EC%88%98-Python
