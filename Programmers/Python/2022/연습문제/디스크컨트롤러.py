@@ -24,3 +24,26 @@ def solution(jobs):
     return answer // len(jobs)
 
 # 참고 : https://soohyun6879.tistory.com/136
+
+# 220209
+import heapq
+def solution(jobs):
+    answer, i, now = 0, 0, 0
+    start = -1
+    heap = []
+    
+    while i < len(jobs) :
+        for j in jobs :
+            if start < j[0] <= now :
+                heapq.heappush(heap, (j[1], j[0]))
+        
+        if heap :
+            cur = heapq.heappop(heap)
+            start = now
+            now += cur[0]
+            answer += now - cur[1]
+            i += 1
+            
+        else :
+            now += 1
+    return answer // len(jobs)

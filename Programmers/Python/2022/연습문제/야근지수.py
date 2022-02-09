@@ -25,3 +25,24 @@ def solution(n, works):
     return ans
 
 # https://velog.io/@daon9apples/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-Level3-%EC%95%BC%EA%B7%BC-%EC%A7%80%EC%88%98-Python
+
+# 220209 풀이
+import heapq
+def solution(n, works):
+    heap = []
+    
+    for w in works :
+        heapq.heappush(heap, [-w, w])
+    
+    while n != 0 :
+        work = heapq.heappop(heap)
+        if work[0] != 0 and work[1] != 0 :
+            work[0] += 1
+            work[1] -= 1
+        heapq.heappush(heap, work)
+        n -= 1
+    
+    ans = 0
+    for h in heap :
+        ans += (h[1]**2)
+    return ans
