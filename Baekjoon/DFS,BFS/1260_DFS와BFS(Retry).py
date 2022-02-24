@@ -1,53 +1,53 @@
 # 210517 풀이
-import sys
-from collections import deque
+# import sys
+# from collections import deque
 
-def dfs(graph, v, visited) :
-    visited[v-1] = True
-    print(v, end=' ')
-    if False not in visited :
-        return 
-    for g in graph[v] :
-        if not visited[g-1] :
-            dfs(graph, g, visited) 
+# def dfs(graph, v, visited) :
+#     visited[v-1] = True
+#     print(v, end=' ')
+#     if False not in visited :
+#         return 
+#     for g in graph[v] :
+#         if not visited[g-1] :
+#             dfs(graph, g, visited) 
 
-def bfs(graph, v, visited) :
+# def bfs(graph, v, visited) :
     
-    visited[v-1] = True
-    print(v, end=' ')
-    queue = deque(graph[v])
-    while queue :
-        val = queue.popleft()
-        if not visited[val-1] :
-             visited[val-1] = True
-             print(val, end=' ')
+#     visited[v-1] = True
+#     print(v, end=' ')
+#     queue = deque(graph[v])
+#     while queue :
+#         val = queue.popleft()
+#         if not visited[val-1] :
+#              visited[val-1] = True
+#              print(val, end=' ')
 
-        for g in graph[val] :
-            if not visited[g-1] :
-                queue.append(g)
+#         for g in graph[val] :
+#             if not visited[g-1] :
+#                 queue.append(g)
 
         
-        if False not in visited :
-            break
+#         if False not in visited :
+#             break
 
 
-n, m, v = map(int, sys.stdin.readline().split())
+# n, m, v = map(int, sys.stdin.readline().split())
 
-graph = {i:[] for i in range(1, n+1)}
-for _ in range(m) :
-    start, end = map(int, sys.stdin.readline().split())
-    graph[start].append(end)
-    graph[end].append(start)
+# graph = {i:[] for i in range(1, n+1)}
+# for _ in range(m) :
+#     start, end = map(int, sys.stdin.readline().split())
+#     graph[start].append(end)
+#     graph[end].append(start)
 
-for key in graph.keys() :
-    graph[key].sort()
+# for key in graph.keys() :
+#     graph[key].sort()
 
-dfs_visited = [False] * n
-bfs_visited = [False] * n
+# dfs_visited = [False] * n
+# bfs_visited = [False] * n
 
-dfs(graph, v, dfs_visited)
-print()
-bfs(graph, v, bfs_visited)
+# dfs(graph, v, dfs_visited)
+# print()
+# bfs(graph, v, bfs_visited)
 
 
 # # 그래프 설정
@@ -122,3 +122,49 @@ bfs(graph, v, bfs_visited)
 # visited = []
 # bfs(graph, v, visited)
 
+import sys
+from collections import deque
+n, m, k  = map(int, sys.stdin.readline().split())
+graph = {i:[] for i in range(1, n+1)}
+
+for _ in range(m) :
+    start, end = map(int, sys.stdin.readline().split())
+    graph[start].append(end)
+    graph[end].append(start)
+
+for g in graph.keys() :
+    graph[g].sort()
+
+def dfs(graph, visited, v) :
+    visited[v-1] = True
+    print(v, end=' ')
+
+    if False not in visited :
+        return
+    
+    for i in graph[v] :
+        if not visited[i-1] :
+            dfs(graph, visited, i)  
+    
+        
+visited = [False] * n
+dfs(graph, visited, k)
+print()
+
+def bfs(graph, visited, k) :
+    queue = deque()
+    queue.append(k)
+    print(k, end = ' ')
+    visited[k-1] = True
+
+    while queue :
+        val = queue.popleft()
+        for i in graph[val] :
+            if not visited[i-1] :
+                print(i, end = ' ')
+                queue.append(i)
+                visited[i-1] = True
+        
+
+visited = [False] * n
+bfs(graph, visited, k)

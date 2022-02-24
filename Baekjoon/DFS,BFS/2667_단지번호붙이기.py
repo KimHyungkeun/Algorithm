@@ -1,55 +1,55 @@
 # 210909 재풀이
-import sys
-from collections import deque
+# import sys
+# from collections import deque
 
-n = int(sys.stdin.readline())
-board = []
-for _ in range(n) :
-    row = list(map(int,sys.stdin.readline().rstrip()))
-    board.append(row)
+# n = int(sys.stdin.readline())
+# board = []
+# for _ in range(n) :
+#     row = list(map(int,sys.stdin.readline().rstrip()))
+#     board.append(row)
 
-visited = []
-home_cnt = []
+# visited = []
+# home_cnt = []
 
-# print(board)
-def bfs(x, y, board, visited) :
-    dx = [0,0,1,-1]
-    dy = [1,-1,0,0]
-    q = deque()
-    q.append((x,y))
-    cnt = 1
+# # print(board)
+# def bfs(x, y, board, visited) :
+#     dx = [0,0,1,-1]
+#     dy = [1,-1,0,0]
+#     q = deque()
+#     q.append((x,y))
+#     cnt = 1
 
-    while q :
-        x,y = q.popleft()
+#     while q :
+#         x,y = q.popleft()
 
-        for d in range(4) :
-            px = x + dx[d]
-            py = y + dy[d]
+#         for d in range(4) :
+#             px = x + dx[d]
+#             py = y + dy[d]
 
-            if px <= -1 or px >= n or py <= -1 or py >= n :
-                continue
+#             if px <= -1 or px >= n or py <= -1 or py >= n :
+#                 continue
             
-            if board[px][py] == 1 and (px,py) not in visited :
-                q.append((px, py))
-                visited.append((px,py))
-                board[px][py] = 0
-                cnt += 1
+#             if board[px][py] == 1 and (px,py) not in visited :
+#                 q.append((px, py))
+#                 visited.append((px,py))
+#                 board[px][py] = 0
+#                 cnt += 1
   
-    home_cnt.append(cnt)
+#     home_cnt.append(cnt)
     
 
 
-for i in range(n) :
-    for j in range(n) :      
-        if board[i][j] == 1:
-            visited.append((i,j))
-            bfs(i,j, board,visited)
+# for i in range(n) :
+#     for j in range(n) :      
+#         if board[i][j] == 1:
+#             visited.append((i,j))
+#             bfs(i,j, board,visited)
 
         
-home_cnt.sort()
-print(len(home_cnt))
-for h in home_cnt :
-    print(h)
+# home_cnt.sort()
+# print(len(home_cnt))
+# for h in home_cnt :
+#     print(h)
 
 # 210517 재풀이
 # import sys
@@ -157,3 +157,56 @@ for h in home_cnt :
 # # 각 단지별 번지의 총 갯수를 출력
 # for i in range(len(home_num)) :
 #     print(home_num[i])
+
+# 220224
+import sys
+from collections import deque
+n = int(sys.stdin.readline())
+hometown = []
+for _ in range(n) :
+    arr = list(map(int, sys.stdin.readline().rstrip()))
+    hometown.append(arr)
+
+
+def bfs(x, y, hometown, visited) :
+    queue = deque()
+    queue.append((x,y))
+    
+    n = len(hometown)
+    cnt = 1
+    dx = [0,0,1,-1]
+    dy = [1,-1,0,0]
+
+    while queue :
+        i, j = queue.popleft()
+        visited.append((i,j))
+        hometown[i][j] = 0
+        for k in range(4) :
+            nx = i + dx[k]
+            ny = j + dy[k]
+
+            if nx < 0 or nx >= n or ny < 0 or ny >= n :
+                continue
+            if hometown[nx][ny] == 0 :
+                continue
+            if (nx, ny) not in visited and hometown[nx][ny] == 1 :
+                queue.append((nx, ny))
+                visited.append((nx, ny))
+                cnt += 1
+    
+    return cnt
+
+cnt = 0
+result = []
+visited = []
+for i in range(n) :
+    for j in range(n) :
+        if hometown[i][j] == 1 :
+            ans = bfs(i,j, hometown, visited)
+            result.append(ans)
+
+result.sort()
+
+print(len(result))
+for r in result :
+    print(r)
